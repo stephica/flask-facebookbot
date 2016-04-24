@@ -19,9 +19,21 @@ class TokenStore(object):
             raise InvalidTokenGenerator("Token generator provided is invalid")
 
 
-    def gen_token():
+    def gen_token(self):
         return self.token_generator.gen_token()
 
-    def add_user(token):
+    def _add_token(self,service,token,uuid=None):
+        if uuid ==None:
+            uuid = self.gen_token()
+        self.store[uuid][service] = token
 
-    def get_facebook_token(utoken):
+        return uuid,token
+
+    def _has_token(self,service):
+        pass
+
+
+    def add_facebook_token(self,token,uuid=None):
+        return self._add_token("facebook",token,uuid)
+
+    def get_facebook_token(self,uuid):

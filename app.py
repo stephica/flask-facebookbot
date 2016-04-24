@@ -19,7 +19,8 @@ def user_hook(utoken):
 
 @app.route("/webhook/",methods=["GET","POST"])
 def webhook():
-    if request.method == "POST":
+    print("heyo",file=sys.stderr)
+    if request.method =="POST":
         print(request.data,file=sys.stderr)
         return jsonify({"info":"success"})
     else:
