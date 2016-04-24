@@ -1,0 +1,23 @@
+{
+  "name": "flask-template",
+  "authors": [
+    "girishramnani <girishramnani95@gmail.com>"
+  ],
+  "description": "a template to quickly run flask",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./static",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.3"
+  }
+}
