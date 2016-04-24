@@ -6,7 +6,6 @@ app = Flask(__name__)
 conf = dict()
 conf["TOKEN"] = os.environ["TOKEN"]
 conf["VCODE"] = os.environ["VCODE"]
-print(conf,file=sys.stderr)
 
 @app.route("/")
 def index():
@@ -20,7 +19,6 @@ def user_hook(utoken):
 
 @app.route("/webhook/",methods=["GET","POST"])
 def webhook():
-    print("heyo",file=sys.stderr)
     if request.method =="POST":
         print(request.data,file=sys.stderr)
         return jsonify({"info":"success"})
