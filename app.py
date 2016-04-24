@@ -1,13 +1,20 @@
 from flask import Flask,jsonify,request
-import sys
+import os
 
 app = Flask(__name__)
-TOKEN = os.environ["TOKEN"]
+conf = dict()
+conf["TOKEN"] = os.environ["TOKEN"]
+conf["VCODE"] = os.environ["VCODE"]
 
 
 @app.route("/")
 def index():
     return jsonify({"info":"success"})
+
+@app.route("/token/<utoken>",methods=["GET","POST"])
+def user_hook(utoken):
+    pass
+
 
 @app.route("/webhook/",methods=["GET","POST"])
 def webhook():
@@ -18,7 +25,7 @@ def webhook():
 
     else:
         verification_code = request.args.get("hub.verify_token")
-        if verification_code == os.environ["VCODE"]:
+        if verification_code == conf["VCODE"]:
             return request.args.get("hub.challenge")
         return "sorry"
 
